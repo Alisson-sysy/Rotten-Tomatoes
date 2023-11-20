@@ -11,9 +11,9 @@ set DB_NAME=testebat
 set PSQL_PATH="C:\Program Files\PostgreSQL\11\bin\psql.exe"
 
 %PSQL_PATH% -U postgres -c "CREATE DATABASE %DB_NAME%;"
-%PSQL_PATH% -U postgres -d %DB_NAME% -c "create table if not exists films (i_film serial not null primary key,title char(200) not null,description char(500),original_language char(200),director char(200),score float,cover char(500),duration int,releaseYear smallint);"
-%PSQL_PATH% -U postgres -d %DB_NAME% -c "create table if not exists reviews (i_review serial not null primary key,title char(200) not null,analysis char(500) not null,score float,name char(200),img char(500),i_film int,foreign key(i_film) references films(i_film));"
-%PSQL_PATH% -U postgres -d %DB_NAME% -c "create table if not exists genres (i_genre serial not null primary key,name char(200));"
+%PSQL_PATH% -U postgres -d %DB_NAME% -c "create table if not exists films (i_film serial not null primary key,title varchar(200) not null,description varchar(500),original_language varchar(200),director varchar(200),score float,cover varchar(500),duration int,releaseYear smallint);"
+%PSQL_PATH% -U postgres -d %DB_NAME% -c "create table if not exists reviews (i_review serial not null primary key,title varchar(200) not null,analysis varchar(500) not null,score float,name varchar(200),img varchar(500),i_film int,foreign key(i_film) references films(i_film));"
+%PSQL_PATH% -U postgres -d %DB_NAME% -c "create table if not exists genres (i_genre serial not null primary key,name varchar(200));"
 %PSQL_PATH% -U postgres -d %DB_NAME% -c "create table if not exists genre_film (i_film int,i_genre int,foreign key(i_film) references films(i_film),foreign key(i_genre) references genres(i_genre));"
 
 :: Ad data examples
